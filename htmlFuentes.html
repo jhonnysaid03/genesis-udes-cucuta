@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Génesis - Sistema de gestión de estudiantes</title>
+    <link rel="stylesheet" href="cssFuentes.css"> 
+</head>
+<body>
+
+    <div id="login-container">
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="logo-udes-top.png" alt="Universidad de Santander - UDES" class="udes-logo-top">
+                    <p class="vigilancia">VIGILADA MINEDUCACIÓN</p>
+                </div>
+                <div class="title-area">
+                    <h1 class="genesis-title">Génesis</h1>
+                    <p class="genesis-subtitle">Sistema de gestión estudiantes</p>
+                    <p class="genesis-subtitle location">Cúcuta Semestre 2025B</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Documentación</a></li>
+                    <li><a href="#" class="nav-button">Tutoriales</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-container">
+            <div class="content-wrapper">
+                
+                <section class="welcome-section">
+                    <h2>Bienvenido a Génesis.</h2>
+                    <div class="separator"></div>
+                    <p>Génesis es el sistema para gestión de servicios estudiantiles tales como Matrícula, Horarios, Plan de estudios, Calificaciones y Certificados, entre otros. Está construido por la Universidad de Santander con tecnología de punta y optimizado para la gestión de grandes cantidades de datos.</p>
+                    <p>Génesis se integra con la aplicación para la gestión de Horarios (Master), con la aplicación para la gestión de servicios docentes (Galileo) y con la aplicación para la gestión de servicios de Registro y Control Académico (DaVinci). Estas aplicaciones conforman el sistema integral de gestión académica (SIGA).</p>
+                    <div class="inscription-link-box">
+                        <p>Para inscribirse como aspirante haga <a href="#">clic aquí</a></p>
+                    </div>
+                </section>
+
+                <section class="login-section">
+                    <h3>Ingreso de estudiantes</h3>
+                    <form id="loginForm" class="login-form">
+                        <div class="input-row">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" id="usuario" name="usuario" required aria-label="Usuario">
+                        </div>
+                        <div class="input-row">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" required aria-label="Contraseña">
+                        </div>
+                        <div class="button-row">
+                            <button type="submit" class="btn-primary">Ingresar</button>
+                            <a href="#" class="btn-link">Restaurar contraseña</a>
+                        </div>
+                        <p class="error-message" id="login-error"></p>
+                    </form>
+                    <div class="login-info-box">
+                        <p><a href="#"><span class="info-icon">ⓘ</span> Para obtener la última versión de Génesis, recomendamos borrar caché de su navegador ó presione Ctrl+R</a></p>
+                        <div class="tutorials-links">
+                            <a href="#"><span class="play-icon">▶</span> Tutoriales</a> | <a href="#"><span class="doc-icon">📄</span> Manuales</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <div id="main-interface" class="hidden">
+        <header class="main-header dashboard-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="logo-udes-top.png" alt="Universidad de Santander - UDES" class="udes-logo-top">
+                    <p class="vigilancia">VIGILADA MINEDUCACIÓN</p>
+                </div>
+                <div class="title-area">
+                    <h1 class="genesis-title">Génesis</h1>
+                    <p class="genesis-subtitle">Sistema de gestión estudiantes</p>
+                    <p class="genesis-subtitle location">Cúcuta Semestre 2025B</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="#"><span class="nav-icon">🏠</span> Trámites Académicos</a></li>
+                <li><a href="#">Record de notas</a></li>
+                <li><a href="#">Plan de estudio</a></li>
+                <li><a href="#">Matrícula</a></li>
+                <li><a href="#">Horario</a></li>
+                <li><a href="#">Notas</a></li>
+            </ul>
+            <div class="user-info-bar">
+                <span class="tutor-icon">👨‍🏫 Tutorías</span>
+                <span class="user-name-display" id="user-name"></span>
+                <span class="dropdown-icon">🔽</span>
+            </div>
+        </nav>
+
+        <main class="main-container dashboard-main">
+            <div class="dashboard-wrapper">
+                
+                <div class="menu-grid">
+                    <button class="menu-item"><span class="icon">📄</span>Datos financieros Paz y Salvo</button>
+                    <button class="menu-item"><span class="icon">📜</span>Documentos pendientes</button>
+                    <button class="menu-item"><span class="icon">📝</span>Record de notas</button>
+                    <button class="menu-item"><span class="icon">✅</span>Matrícula</button>
+                    <button class="menu-item"><span class="icon">📋</span>Plan de estudio</button>
+                    <button class="menu-item"><span class="icon">📅</span>Horario</button>
+                    
+                    <button class="menu-item" id="notas-asistencias-btn"><span class="icon">✔️</span>Notas y Asistencias</button>
+                    
+                    <button class="menu-item"><span class="icon">📑</span>Polígrafo</button>
+                    <button class="menu-item"><span class="icon">🏅</span>Certificados</button>
+                    <button class="menu-item"><span class="icon">🗓️</span>Reservas diarias</button>
+                    <button class="menu-item"><span class="icon">💳</span>Recibo de matrícula</button>
+                    <button class="menu-item"><span class="icon">📚</span>Tutorías</button>
+                    <button class="menu-item"><span class="icon">💰</span>Solicitud de descuentos</button>
+                    <button class="menu-item"><span class="icon">🏦</span>ICETEX</button>
+                    <button class="menu-item"><span class="icon">🔄</span>Matrícula de cursos Intersemestrales</button>
+                    <button class="menu-item new-tag"><span class="icon">🗓️</span>Reservar espacios</button>
+                    <button class="menu-item"><span class="icon">🌐</span>Cursos intensivos de idiomas</button>
+                    <button class="menu-item"><span class="icon">💻</span>Intersemestral informática</button>
+                </div>
+
+                <div class="info-sidebar">
+                    <div class="academic-info-card">
+                        <div class="card-header blue-header">
+                             <h3>Información Académica</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Concepto</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Promedio</td>
+                                    <td class="academic-value" id="promedio-valor"></td>
+                                </tr>
+                                <tr>
+                                    <td>Semestre</td>
+                                    <td class="academic-value" id="semestre-valor"></td>
+                                </tr>
+                                <tr>
+                                    <td>Activo académico</td>
+                                    <td class="academic-value"><span class="active-check"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="card-header dark-header">
+                            <h3>Noticias <span class="info-icon">ⓘ</span></h3>
+                        </div>
+                        <p class="news-content">No hay noticias nuevas.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notas-asistencias-interface" class="hidden">
+        <header class="main-header dashboard-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="logo-udes-top.png" alt="Universidad de Santander - UDES" class="udes-logo-top">
+                    <p class="vigilancia">VIGILADA MINEDUCACIÓN</p>
+                </div>
+                <div class="title-area">
+                    <h1 class="genesis-title">Génesis</h1>
+                    <p class="genesis-subtitle">Sistema de gestión estudiantes</p>
+                    <p class="genesis-subtitle location">Cúcuta Semestre 2025B</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="#" class="back-to-dashboard"><span class="nav-icon">🏠</span> Trámites Académicos</a></li>
+                <li><a href="#">Record de notas</a></li>
+                <li><a href="#">Plan de estudio</a></li>
+                <li><a href="#">Matrícula</a></li>
+                <li><a href="#">Horario</a></li>
+                <li><a href="#">Notas</a></li>
+            </ul>
+            <div class="user-info-bar">
+                <span class="tutor-icon">👨‍🏫 Tutorías</span>
+                <span class="user-name-display" id="user-name-notas"></span>
+                <span class="dropdown-icon">🔽</span>
+            </div>
+        </nav>
+
+        <main class="main-container notas-main-content">
+            <div class="notes-header">
+                <h2>Notas y Asistencias</h2>
+                <div class="breadcrumb">
+                    <a href="#" class="back-to-dashboard">Inicio</a> > <span>Notas</span> > <span id="breadcrumb-student-name"></span>
+                </div>
+            </div>
+
+            <div class="notes-section-card">
+                <p class="notes-info-reminder"><strong>Recuerde:</strong></p>
+                <p class="notes-info-reminder">La definitiva es un valor aproximado hasta que no se haya digitado el 100% de las notas del grupo.</p>
+
+                <div class="table-scroll-wrapper">
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th>Grupo</th>
+                                <th>Materia</th>
+                                <th>Semestre</th>
+                                <th>Créditos</th>
+                                <th>Inasistencias</th>
+                                <th>P1 / 30%</th>
+                                <th>P2 / 30%</th>
+                                <th>EXAMEN / 40%</th>
+                                <th>Acumulado</th>
+                                <th>Habilitación</th>
+                                <th>Def. Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>Universidad de Santander - Sistemas de Información</p>
+            <p>Todos los derechos reservados © 2016</p>
+            <p>Institución de Educación Superior sujeta a la inspección y vigilancia del Ministerio de Educación Nacional</p>
+        </div>
+    </footer>
+
+    <script src="javaFuentes.js"></script> 
+</body>
+</html>

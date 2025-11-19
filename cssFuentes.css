@@ -1,0 +1,2330 @@
+/* --- Variables y Reset Básico --- */
+:root {
+    --color-principal: #0d47a1; /* Azul Institucional Oscuro (Headers, botones) */
+    --color-fondo: #f5f5f5; /* Gris muy claro para el fondo */
+    --color-footer: #335d88; /* Azul Oscuro de la franja inferior/headers de info */
+    --color-texto: #333333;
+    --color-borde: #cccccc;
+    --color-link: #007bff;
+    --color-separador: #ccc;
+    --sombra-caja: 0 1px 1px rgba(0, 0, 0, 0.05);
+    --color-menu-bg: #f8f8f8;
+    --color-grid-item: #fff;
+    --color-grid-border: #ddd;
+    --color-check: #4CAF50; /* Color del check verde */
+    --color-notas-card-bg: #fdfdfd; /* Fondo de la tarjeta de notas */
+    --color-notas-table-header-bg: #e0e0e0; /* Fondo de encabezado de tabla */
+    --color-notas-table-border: #ccc; /* Borde de tabla */
+    --color-notas-reminder-bg: #f2f2f2; /* Fondo del recordatorio */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+    font-size: 14px;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* --- 1. CABECERA Y NAVEGACIÓN (LOGIN Y DASHBOARD) --- */
+.main-header {
+    background-color: white;
+    box-shadow: var(--sombra-caja);
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-header {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-bottom: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 0;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.udes-logo-top {
+    width: 250px; 
+    height: auto;
+}
+
+.vigilancia {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.title-area {
+    text-align: right;
+    line-height: 1.2;
+    padding-top: 15px;
+}
+
+.genesis-title {
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--color-principal);
+    margin: 0;
+}
+
+.genesis-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.location {
+    font-weight: bold;
+}
+
+.main-nav {
+    background-color: var(--color-menu-bg); 
+    border-top: 1px solid var(--color-separador);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.main-nav li a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: var(--color-texto);
+    border-right: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.main-nav li a.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    color: var(--color-principal);
+}
+
+.nav-button {
+    background-color: #a0a0a0; 
+    color: white !important;
+    border-radius: 3px;
+    padding: 4px 10px !important;
+    margin: 4px 0 4px 10px;
+    font-size: 0.9em;
+}
+
+.nav-button:hover {
+    background-color: #888;
+}
+
+/* --- 2. CONTENIDO PRINCIPAL (Módulos de Login) --- */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px; 
+}
+
+.welcome-section, .login-section {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+}
+
+.login-form input {
+    background-color: #fff;
+}
+
+/* ================================== */
+/* ESTILOS DEL DASHBOARD */
+/* ================================== */
+
+.dashboard-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid var(--color-separador); 
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 0.9em;
+    gap: 0; 
+}
+
+.dashboard-nav li a {
+    color: var(--color-texto);
+    padding: 8px 15px; 
+    font-weight: bold;
+    border-right: 1px solid #eee; 
+}
+
+.dashboard-nav li:last-child a {
+    border-right: none;
+}
+
+.dashboard-nav li a:hover {
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+.nav-icon {
+    margin-right: 5px;
+}
+
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.tutor-icon {
+    padding: 2px 8px;
+    border: 1px solid var(--color-separador);
+    background-color: #e0e0e0;
+    color: #4CAF50; 
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.dropdown-icon::before {
+    content: "🗓️"; 
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.user-name-display {
+    color: var(--color-texto);
+}
+
+.dashboard-main {
+    padding-top: 15px; 
+}
+
+.dashboard-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.menu-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: var(--color-grid-item);
+    border: 1px solid var(--color-grid-border);
+    color: var(--color-texto); 
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+    height: 80px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: none;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+    border-color: var(--color-principal);
+}
+
+.menu-item .icon {
+    font-size: 2em; 
+    margin-bottom: 5px;
+    line-height: 1; 
+}
+
+.menu-item.new-tag::after {
+    content: "NUEVO";
+    position: absolute;
+    top: -5px; 
+    right: 5px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 0.65em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.info-sidebar {
+    flex: 1.5; 
+    min-width: 300px;
+}
+
+.academic-info-card, .news-card {
+    border: 1px solid var(--color-grid-border);
+    margin-bottom: 15px; 
+    background-color: var(--color-grid-item);
+    border-radius: 3px;
+    box-shadow: none; 
+}
+
+.card-header {
+    padding: 10px;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.blue-header {
+    background-color: var(--color-principal); 
+    border-bottom: 1px solid #083884;
+}
+
+.dark-header {
+    background-color: var(--color-footer); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #294c6e;
+}
+
+.news-card h3 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.academic-info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+.academic-info-card th, .academic-info-card td {
+    padding: 8px 10px;
+    border: 1px solid var(--color-grid-border);
+    text-align: left;
+}
+
+.academic-info-card th {
+    background-color: #f7f7f7; 
+    font-weight: bold;
+}
+
+.academic-value {
+    text-align: center;
+    font-weight: bold;
+}
+
+.active-check::before {
+    content: '✓'; 
+    color: var(--color-check);
+    font-size: 1.2em;
+}
+
+.news-content {
+    padding: 10px;
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.info-icon {
+    background-color: #fff;
+    color: var(--color-footer);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* --- 3. PIE DE PÁGINA INSTITUCIONAL --- */
+
+.main-footer {
+    background-color: var(--color-footer);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+
+/* ================================== */
+/* ESTILOS DE LA TERCERA INTERFAZ (NOTAS Y ASISTENCIAS) */
+/* ================================== */
+
+.notas-main-content {
+    padding-top: 15px;
+}
+
+.notes-header {
+    margin-bottom: 15px;
+}
+
+.notes-header h2 {
+    font-size: 1.6em;
+    color: var(--color-texto);
+    margin: 0 0 10px 0;
+    font-weight: normal;
+}
+
+.breadcrumb {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 5px;
+}
+
+.notes-section-card {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+    padding: 20px;
+}
+
+.notes-info-reminder {
+    background-color: var(--color-notas-reminder-bg);
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.notes-info-reminder strong {
+    color: var(--color-texto);
+}
+
+.table-scroll-wrapper {
+    overflow-x: auto; /* Permite scroll horizontal si la tabla es muy ancha */
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.grades-table th, .grades-table td {
+    border: 1px solid var(--color-notas-table-border);
+    padding: 8px 10px;
+    text-align: left;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+
+.grades-table thead th {
+    background-color: var(--color-notas-table-header-bg);
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.grades-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Rayas alternas para mejor lectura */
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilo para las "bolitas" de inasistencias */
+.inasistencia-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #6c757d; /* Gris para la bolita */
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .content-wrapper, .dashboard-wrapper {
+        flex-direction: column; 
+    }
+
+    .login-form label {
+        text-align: left;
+        flex: none;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .login-form .input-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button-row {
+        justify-content: space-between;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grades-table th, .grades-table td {
+        font-size: 0.8em; /* Ajustar tamaño de fuente para tablas en móvil */
+        padding: 6px 8px;
+    }
+}
+/* --- Variables y Reset Básico --- */
+:root {
+    --color-principal: #0d47a1; /* Azul Institucional Oscuro (Headers, botones) */
+    --color-fondo: #f5f5f5; /* Gris muy claro para el fondo */
+    --color-footer: #335d88; /* Azul Oscuro de la franja inferior/headers de info */
+    --color-texto: #333333;
+    --color-borde: #cccccc;
+    --color-link: #007bff;
+    --color-separador: #ccc;
+    --sombra-caja: 0 1px 1px rgba(0, 0, 0, 0.05);
+    --color-menu-bg: #f8f8f8;
+    --color-grid-item: #fff;
+    --color-grid-border: #ddd;
+    --color-check: #4CAF50; /* Color del check verde */
+    --color-notas-card-bg: #fdfdfd; /* Fondo de la tarjeta de notas */
+    --color-notas-table-header-bg: #e0e0e0; /* Fondo de encabezado de tabla */
+    --color-notas-table-border: #ccc; /* Borde de tabla */
+    --color-notas-reminder-bg: #f2f2f2; /* Fondo del recordatorio */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+    font-size: 14px;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* --- 1. CABECERA Y NAVEGACIÓN (LOGIN Y DASHBOARD) --- */
+.main-header {
+    background-color: white;
+    box-shadow: var(--sombra-caja);
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-header {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-bottom: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 0;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.udes-logo-top {
+    width: 250px; 
+    height: auto;
+}
+
+.vigilancia {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.title-area {
+    text-align: right;
+    line-height: 1.2;
+    padding-top: 15px;
+}
+
+.genesis-title {
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--color-principal);
+    margin: 0;
+}
+
+.genesis-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.location {
+    font-weight: bold;
+}
+
+.main-nav {
+    background-color: var(--color-menu-bg); 
+    border-top: 1px solid var(--color-separador);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.main-nav li a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: var(--color-texto);
+    border-right: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.main-nav li a.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    color: var(--color-principal);
+}
+
+.nav-button {
+    background-color: #a0a0a0; 
+    color: white !important;
+    border-radius: 3px;
+    padding: 4px 10px !important;
+    margin: 4px 0 4px 10px;
+    font-size: 0.9em;
+}
+
+.nav-button:hover {
+    background-color: #888;
+}
+
+/* --- 2. CONTENIDO PRINCIPAL (Módulos de Login) --- */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px; 
+}
+
+.welcome-section, .login-section {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+}
+
+.login-form input {
+    background-color: #fff;
+}
+
+/* ================================== */
+/* ESTILOS DEL DASHBOARD */
+/* ================================== */
+
+.dashboard-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid var(--color-separador); 
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 0.9em;
+    gap: 0; 
+}
+
+.dashboard-nav li a {
+    color: var(--color-texto);
+    padding: 8px 15px; 
+    font-weight: bold;
+    border-right: 1px solid #eee; 
+}
+
+.dashboard-nav li:last-child a {
+    border-right: none;
+}
+
+.dashboard-nav li a:hover {
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+.nav-icon {
+    margin-right: 5px;
+}
+
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.tutor-icon {
+    padding: 2px 8px;
+    border: 1px solid var(--color-separador);
+    background-color: #e0e0e0;
+    color: #4CAF50; 
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.dropdown-icon::before {
+    content: "🗓️"; 
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.user-name-display {
+    color: var(--color-texto);
+}
+
+.dashboard-main {
+    padding-top: 15px; 
+}
+
+.dashboard-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.menu-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: var(--color-grid-item);
+    border: 1px solid var(--color-grid-border);
+    color: var(--color-texto); 
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+    height: 80px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: none;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+    border-color: var(--color-principal);
+}
+
+.menu-item .icon {
+    font-size: 2em; 
+    margin-bottom: 5px;
+    line-height: 1; 
+}
+
+.menu-item.new-tag::after {
+    content: "NUEVO";
+    position: absolute;
+    top: -5px; 
+    right: 5px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 0.65em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.info-sidebar {
+    flex: 1.5; 
+    min-width: 300px;
+}
+
+.academic-info-card, .news-card {
+    border: 1px solid var(--color-grid-border);
+    margin-bottom: 15px; 
+    background-color: var(--color-grid-item);
+    border-radius: 3px;
+    box-shadow: none; 
+}
+
+.card-header {
+    padding: 10px;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.blue-header {
+    background-color: var(--color-principal); 
+    border-bottom: 1px solid #083884;
+}
+
+.dark-header {
+    background-color: var(--color-footer); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #294c6e;
+}
+
+.news-card h3 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.academic-info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+.academic-info-card th, .academic-info-card td {
+    padding: 8px 10px;
+    border: 1px solid var(--color-grid-border);
+    text-align: left;
+}
+
+.academic-info-card th {
+    background-color: #f7f7f7; 
+    font-weight: bold;
+}
+
+.academic-value {
+    text-align: center;
+    font-weight: bold;
+}
+
+.active-check::before {
+    content: '✓'; 
+    color: var(--color-check);
+    font-size: 1.2em;
+}
+
+.news-content {
+    padding: 10px;
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.info-icon {
+    background-color: #fff;
+    color: var(--color-footer);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* --- 3. PIE DE PÁGINA INSTITUCIONAL --- */
+
+.main-footer {
+    background-color: var(--color-footer);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+
+/* ================================== */
+/* ESTILOS DE LA TERCERA INTERFAZ (NOTAS Y ASISTENCIAS) */
+/* ================================== */
+
+.notas-main-content {
+    padding-top: 15px;
+    max-width: 1200px; /* Asegurar que ocupe todo el ancho disponible del main container */
+    margin: 0 auto;
+}
+
+.notes-header {
+    margin-bottom: 15px;
+}
+
+.notes-header h2 {
+    font-size: 1.6em;
+    color: var(--color-texto);
+    margin: 0 0 10px 0;
+    font-weight: normal;
+}
+
+.breadcrumb {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 5px;
+}
+
+.notes-section-card {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+    padding: 20px;
+}
+
+.notes-info-reminder {
+    background-color: var(--color-notas-reminder-bg);
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.notes-info-reminder strong {
+    color: var(--color-texto);
+}
+
+.table-scroll-wrapper {
+    overflow-x: auto; 
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 800px; /* Asegura que la tabla no sea demasiado estrecha */
+}
+
+.grades-table th, .grades-table td {
+    border: 1px solid var(--color-notas-table-border);
+    padding: 8px 10px;
+    text-align: left;
+    white-space: nowrap; 
+}
+
+.grades-table thead th {
+    background-color: var(--color-notas-table-header-bg);
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.grades-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; 
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.grades-table td.text-center {
+    text-align: center;
+}
+
+.grades-table td.def-final {
+    font-weight: bold;
+    color: var(--color-principal); /* Azul para la nota final si es aprobatoria */
+}
+
+.grades-table td.fail {
+    color: red; /* Rojo para nota reprobatoria (aunque aquí no se da el caso) */
+}
+
+.grades-table a {
+    color: var(--color-principal);
+    font-weight: bold;
+}
+
+/* Estilo para las "bolitas" de inasistencias */
+.inasistencia-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #6c757d; 
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .content-wrapper, .dashboard-wrapper {
+        flex-direction: column; 
+    }
+
+    .login-form label {
+        text-align: left;
+        flex: none;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .login-form .input-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .button-row {
+        justify-content: space-between;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grades-table {
+        min-width: 700px; /* Asegurar que la tabla siga siendo legible en móvil con scroll */
+    }
+
+    .grades-table th, .grades-table td {
+        font-size: 0.8em; 
+        padding: 6px 8px;
+    }
+}
+/* --- Variables y Reset Básico --- */
+:root {
+    --color-principal: #0d47a1; /* Azul Institucional Oscuro (Headers, botones) */
+    --color-fondo: #f5f5f5; /* Gris muy claro para el fondo */
+    --color-footer: #335d88; /* Azul Oscuro de la franja inferior/headers de info */
+    --color-texto: #333333;
+    --color-borde: #cccccc;
+    --color-link: #007bff;
+    --color-separador: #ccc;
+    --sombra-caja: 0 1px 1px rgba(0, 0, 0, 0.05);
+    --color-menu-bg: #f8f8f8;
+    --color-grid-item: #fff;
+    --color-grid-border: #ddd;
+    --color-check: #4CAF50; /* Color del check verde */
+    --color-notas-card-bg: #fdfdfd; /* Fondo de la tarjeta de notas */
+    --color-notas-table-header-bg: #e0e0e0; /* Fondo de encabezado de tabla */
+    --color-notas-table-border: #ccc; /* Borde de tabla */
+    --color-notas-reminder-bg: #f2f2f2; /* Fondo del recordatorio */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+    font-size: 14px;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* --- 1. CABECERA Y NAVEGACIÓN (LOGIN Y DASHBOARD) --- */
+.main-header {
+    background-color: white;
+    box-shadow: var(--sombra-caja);
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-header {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-bottom: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 0;
+}
+
+.udes-logo-top {
+    width: 250px; 
+    height: auto;
+}
+
+.vigilancia {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.title-area {
+    text-align: right;
+    line-height: 1.2;
+    padding-top: 15px;
+}
+
+.genesis-title {
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--color-principal);
+    margin: 0;
+}
+
+.genesis-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.location {
+    font-weight: bold;
+}
+
+/* Navegación del Login */
+.main-nav {
+    background-color: var(--color-menu-bg); 
+    border-top: 1px solid var(--color-separador);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.main-nav li a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: var(--color-texto);
+    border-right: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.main-nav li a.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    color: var(--color-principal);
+}
+
+.nav-button {
+    background-color: #a0a0a0; 
+    color: white !important;
+    border-radius: 3px;
+    padding: 4px 10px !important;
+    margin: 4px 0 4px 10px;
+    font-size: 0.9em;
+}
+
+.nav-button:hover {
+    background-color: #888;
+}
+
+/* --- 2. CONTENIDO PRINCIPAL (LOGIN y DASHBOARD) --- */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px; 
+}
+
+/* Base de los cuadros de contenido */
+.welcome-section, .login-section {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+}
+
+/* Navegación del Dashboard */
+.dashboard-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid var(--color-separador); 
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 0.9em;
+    gap: 0; 
+}
+
+.dashboard-nav li a {
+    color: var(--color-texto);
+    padding: 8px 15px; 
+    font-weight: bold;
+    border-right: 1px solid #eee; 
+}
+
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+/* Layout del Dashboard */
+.dashboard-main {
+    padding-top: 15px; 
+}
+
+.dashboard-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+/* Grid de Módulos (Base de 3 columnas para escritorio) */
+.menu-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: var(--color-grid-item);
+    border: 1px solid var(--color-grid-border);
+    color: var(--color-texto); 
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+    height: 80px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: none;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+    border-color: var(--color-principal);
+}
+
+.menu-item .icon {
+    font-size: 2em; 
+    margin-bottom: 5px;
+    line-height: 1; 
+}
+
+.menu-item.new-tag::after {
+    content: "NUEVO";
+    position: absolute;
+    top: -5px; 
+    right: 5px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 0.65em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* Sidebar de Información */
+.info-sidebar {
+    flex: 1.5; 
+    min-width: 300px;
+}
+
+.academic-info-card, .news-card {
+    border: 1px solid var(--color-grid-border);
+    margin-bottom: 15px; 
+    background-color: var(--color-grid-item);
+    border-radius: 3px;
+    box-shadow: none; 
+}
+
+.blue-header {
+    background-color: var(--color-principal); 
+    border-bottom: 1px solid #083884;
+}
+
+.dark-header {
+    background-color: var(--color-footer); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #294c6e;
+}
+
+.academic-info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+/* ================================== */
+/* ESTILOS DE LA TERCERA INTERFAZ (NOTAS Y ASISTENCIAS) */
+/* ================================== */
+
+.notas-main-content {
+    padding-top: 15px;
+}
+
+.notes-header h2 {
+    font-size: 1.6em;
+    color: var(--color-texto);
+    margin: 0 0 10px 0;
+    font-weight: normal;
+}
+
+.breadcrumb {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: var(--color-link);
+}
+
+.notes-section-card {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+    padding: 20px;
+}
+
+.notes-info-reminder {
+    background-color: var(--color-notas-reminder-bg);
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Contenedor clave para el scroll horizontal en móviles */
+.table-scroll-wrapper {
+    overflow-x: auto; 
+    width: 100%; 
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 800px; /* Asegura un ancho mínimo para evitar el colapso de columnas */
+}
+
+.grades-table th, .grades-table td {
+    border: 1px solid var(--color-notas-table-border);
+    padding: 8px 10px;
+    text-align: left;
+    white-space: nowrap; 
+}
+
+.grades-table thead th {
+    background-color: var(--color-notas-table-header-bg);
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.grades-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; 
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.grades-table td.text-center {
+    text-align: center;
+}
+
+.grades-table td.def-final {
+    font-weight: bold;
+    color: var(--color-principal); 
+}
+
+.grades-table a {
+    color: var(--color-principal);
+    font-weight: bold;
+}
+
+.inasistencia-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #6c757d; 
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* --- 3. PIE DE PÁGINA INSTITUCIONAL --- */
+
+.main-footer {
+    background-color: var(--color-footer);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+/* ================================== */
+/* MEDIA QUERIES PARA RESPONSIVIDAD 📱 */
+/* ================================== */
+
+/* 1. Pantallas medianas (Tabletas, hasta 1024px) */
+@media (max-width: 1024px) {
+    
+    /* Dashboard: Apilar Grid y Sidebar */
+    .dashboard-wrapper {
+        flex-direction: column; 
+    }
+
+    /* Grid: Más módulos por fila para aprovechar el ancho */
+    .menu-grid {
+        grid-template-columns: repeat(4, 1fr); 
+        flex: none; 
+    }
+    
+    .info-sidebar {
+        min-width: 100%; 
+        flex: none;
+    }
+
+    .menu-item {
+        font-size: 0.85em;
+        height: 70px;
+    }
+}
+
+/* 2. Pantallas pequeñas (Móviles, hasta 767px) */
+@media (max-width: 767px) {
+    
+    .main-container {
+        padding: 0 10px; 
+    }
+
+    /* Layout general: Apilar secciones */
+    .content-wrapper, .dashboard-wrapper {
+        flex-direction: column; 
+    }
+    
+    /* Encabezado: Apilar logo y título */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .title-area {
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    /* Login Form: Ajustar para que las etiquetas estén arriba */
+    .login-form .input-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .login-form label {
+        width: 100%;
+        margin-bottom: 3px;
+    }
+    
+    .button-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-primary, .btn-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Navegación Principal (Dashboard) */
+    .dashboard-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    
+    .dashboard-nav ul {
+        flex-wrap: wrap; 
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+    
+    .dashboard-nav li a {
+        padding: 6px 10px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .user-info-bar {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-top: 1px solid #eee;
+    }
+
+    /* Grid de Módulos: 2 columnas por fila para móviles */
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .menu-item {
+        font-size: 0.8em;
+        height: 60px;
+    }
+
+    /* Tabla de Notas: Ajustar tipografía y mantener scroll */
+    .grades-table {
+        min-width: 750px; 
+    }
+    
+    .grades-table th, .grades-table td {
+        font-size: 0.75em; 
+        padding: 4px 6px;
+    }
+}
+/* --- Variables y Reset Básico --- */
+:root {
+    --color-principal: #0d47a1; /* Azul Institucional Oscuro (Headers, botones) */
+    --color-fondo: #f5f5f5; /* Gris muy claro para el fondo */
+    --color-footer: #335d88; /* Azul Oscuro de la franja inferior/headers de info */
+    --color-texto: #333333;
+    --color-borde: #cccccc;
+    --color-link: #007bff;
+    --color-separador: #ccc;
+    --sombra-caja: 0 1px 1px rgba(0, 0, 0, 0.05);
+    --color-menu-bg: #f8f8f8;
+    --color-grid-item: #fff;
+    --color-grid-border: #ddd;
+    --color-check: #4CAF50; /* Color del check verde */
+    --color-notas-card-bg: #fdfdfd; /* Fondo de la tarjeta de notas */
+    --color-notas-table-header-bg: #e0e0e0; /* Fondo de encabezado de tabla */
+    --color-notas-table-border: #ccc; /* Borde de tabla */
+    --color-notas-reminder-bg: #f2f2f2; /* Fondo del recordatorio */
+
+    /* Nuevos colores para el botón de login */
+    --color-login-button-bg: #216091; /* Azul más oscuro para el botón */
+    --color-login-button-hover-bg: #1a4f78;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+    font-size: 14px;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* --- 1. CABECERA Y NAVEGACIÓN (LOGIN Y DASHBOARD) --- */
+.main-header {
+    background-color: white;
+    box-shadow: var(--sombra-caja);
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-header {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-bottom: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 0;
+}
+
+.udes-logo-top {
+    width: 250px; 
+    height: auto;
+}
+
+.vigilancia {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.title-area {
+    text-align: right;
+    line-height: 1.2;
+    padding-top: 15px;
+}
+
+.genesis-title {
+    font-size: 2.2em;
+    font-weight: normal;
+    color: var(--color-principal);
+    margin: 0;
+}
+
+.genesis-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+.location {
+    font-weight: bold;
+}
+
+/* Navegación del Login */
+.main-nav {
+    background-color: var(--color-menu-bg); 
+    border-top: 1px solid var(--color-separador);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.main-nav li a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: var(--color-texto);
+    border-right: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.main-nav li a.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    color: var(--color-principal);
+}
+
+.nav-button {
+    background-color: #a0a0a0; 
+    color: white !important;
+    border-radius: 3px;
+    padding: 4px 10px !important;
+    margin: 4px 0 4px 10px;
+    font-size: 0.9em;
+}
+
+.nav-button:hover {
+    background-color: #888;
+}
+
+/* --- 2. CONTENIDO PRINCIPAL (LOGIN y DASHBOARD) --- */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px; 
+}
+
+/* Base de los cuadros de contenido */
+.welcome-section, .login-section {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+}
+
+/* --- ESTILOS ESPECÍFICOS DEL FORMULARIO DE LOGIN (CORREGIDOS) --- */
+.login-section {
+    flex: 1; /* Permite que ocupe su espacio sin forzar ancho */
+    min-width: 300px; /* Asegura un ancho mínimo razonable */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre filas */
+    padding: 15px 0;
+}
+
+.login-form .input-row {
+    display: flex;
+    align-items: center; /* Alinea etiqueta e input en el centro vertical */
+    gap: 10px; /* Espacio entre la etiqueta y el input */
+}
+
+.login-form label {
+    flex: 0 0 90px; /* Ancho fijo para las etiquetas para alinearlos */
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    flex: 1; /* El input toma el resto del espacio */
+    padding: 8px 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    font-size: 0.95em;
+    background-color: #fff;
+    outline: none; /* Eliminar el contorno por defecto */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: var(--color-principal); /* Borde azul al enfocar */
+    box-shadow: 0 0 0 1px var(--color-principal); /* Sombra sutil al enfocar */
+}
+
+.button-row {
+    display: flex;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    align-items: center;
+    gap: 15px; /* Espacio entre el botón y el enlace */
+    margin-top: 10px;
+    padding-left: 100px; /* Alinea los botones con los campos de entrada */
+}
+
+.btn-primary {
+    background-color: var(--color-login-button-bg); /* Nuevo color azul oscuro */
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-login-button-hover-bg); /* Efecto hover más oscuro */
+}
+
+.btn-link {
+    color: var(--color-link);
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.login-info-box {
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: #666;
+    text-align: center;
+}
+
+.login-info-box a {
+    color: var(--color-link);
+}
+
+.info-icon {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.play-icon, .doc-icon {
+    margin-right: 5px;
+}
+
+.tutorials-links {
+    margin-top: 10px;
+}
+
+
+/* Navegación del Dashboard */
+.dashboard-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid var(--color-separador); 
+    border-bottom: 1px solid var(--color-separador);
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 0.9em;
+    gap: 0; 
+}
+
+.dashboard-nav li a {
+    color: var(--color-texto);
+    padding: 8px 15px; 
+    font-weight: bold;
+    border-right: 1px solid #eee; 
+}
+
+.user-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+/* Layout del Dashboard */
+.dashboard-main {
+    padding-top: 15px; 
+}
+
+.dashboard-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+/* Grid de Módulos (Base de 3 columnas para escritorio) */
+.menu-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: var(--color-grid-item);
+    border: 1px solid var(--color-grid-border);
+    color: var(--color-texto); 
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+    height: 80px;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: none;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+    border-color: var(--color-principal);
+}
+
+.menu-item .icon {
+    font-size: 2em; 
+    margin-bottom: 5px;
+    line-height: 1; 
+}
+
+.menu-item.new-tag::after {
+    content: "NUEVO";
+    position: absolute;
+    top: -5px; 
+    right: 5px;
+    background-color: #4CAF50; 
+    color: white;
+    font-size: 0.65em;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+/* Sidebar de Información */
+.info-sidebar {
+    flex: 1.5; 
+    min-width: 300px;
+}
+
+.academic-info-card, .news-card {
+    border: 1px solid var(--color-grid-border);
+    margin-bottom: 15px; 
+    background-color: var(--color-grid-item);
+    border-radius: 3px;
+    box-shadow: none; 
+}
+
+.blue-header {
+    background-color: var(--color-principal); 
+    border-bottom: 1px solid #083884;
+}
+
+.dark-header {
+    background-color: var(--color-footer); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #294c6e;
+}
+
+.academic-info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+/* ================================== */
+/* ESTILOS DE LA TERCERA INTERFAZ (NOTAS Y ASISTENCIAS) */
+/* ================================== */
+
+.notas-main-content {
+    padding-top: 15px;
+}
+
+.notes-header h2 {
+    font-size: 1.6em;
+    color: var(--color-texto);
+    margin: 0 0 10px 0;
+    font-weight: normal;
+}
+
+.breadcrumb {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: var(--color-link);
+}
+
+.notes-section-card {
+    background-color: white;
+    border: 1px solid var(--color-separador);
+    border-radius: 3px;
+    box-shadow: var(--sombra-caja);
+    padding: 20px;
+}
+
+.notes-info-reminder {
+    background-color: var(--color-notas-reminder-bg);
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Contenedor clave para el scroll horizontal en móviles */
+.table-scroll-wrapper {
+    overflow-x: auto; 
+    width: 100%; 
+}
+
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 800px; /* Asegura un ancho mínimo para evitar el colapso de columnas */
+}
+
+.grades-table th, .grades-table td {
+    border: 1px solid var(--color-notas-table-border);
+    padding: 8px 10px;
+    text-align: left;
+    white-space: nowrap; 
+}
+
+.grades-table thead th {
+    background-color: var(--color-notas-table-header-bg);
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.grades-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; 
+}
+
+.grades-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.grades-table td.text-center {
+    text-align: center;
+}
+
+.grades-table td.def-final {
+    font-weight: bold;
+    color: var(--color-principal); 
+}
+
+.grades-table a {
+    color: var(--color-principal);
+    font-weight: bold;
+}
+
+.inasistencia-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #6c757d; 
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* --- 3. PIE DE PÁGINA INSTITUCIONAL --- */
+
+.main-footer {
+    background-color: var(--color-footer);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+/* ================================== */
+/* MEDIA QUERIES PARA RESPONSIVIDAD 📱 */
+/* ================================== */
+
+/* Ajustes específicos para móviles en el formulario de login, solo si es realmente necesario */
+@media (max-width: 767px) {
+    /* Mantener el diseño original del login, pero quizás centrar el cuadro */
+    .login-section {
+        margin: 0 auto; /* Centrar el cuadro de login en pantallas pequeñas */
+        max-width: 350px; /* Limitar el ancho para que no se vea estirado */
+    }
+
+    .login-form .input-row {
+        flex-direction: column; /* Apilar etiqueta y input */
+        align-items: flex-start;
+        gap: 3px;
+    }
+    
+    .login-form label {
+        flex: none; /* Eliminar ancho fijo en móviles */
+        width: 100%; /* Ocupar todo el ancho */
+        text-align: left;
+    }
+
+    .button-row {
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0; /* Remover padding para que los botones se centren o alineen a la izquierda */
+        align-items: center; /* Centrar los botones apilados */
+    }
+    
+    .btn-primary, .btn-link {
+        width: 100%; /* Botones ocupan todo el ancho */
+        max-width: 200px; /* Limitar el ancho de los botones para que no sean demasiado grandes */
+    }
+
+    .login-info-box {
+        text-align: left; /* Alinea el texto informativo a la izquierda */
+    }
+
+    /* Resto de Media Queries se mantienen como estaban para el dashboard y otras secciones */
+    .main-container {
+        padding: 0 10px; 
+    }
+
+    .content-wrapper, .dashboard-wrapper {
+        flex-direction: column; 
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .title-area {
+        text-align: center;
+        padding-top: 5px;
+    }
+
+    .dashboard-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+    
+    .dashboard-nav ul {
+        flex-wrap: wrap; 
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 10px;
+    }
+    
+    .dashboard-nav li a {
+        padding: 6px 10px;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .user-info-bar {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px 0;
+        border-top: 1px solid #eee;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .menu-item {
+        font-size: 0.8em;
+        height: 60px;
+    }
+
+    .grades-table {
+        min-width: 750px; 
+    }
+    
+    .grades-table th, .grades-table td {
+        font-size: 0.75em; 
+        padding: 4px 6px;
+    }
+}
+
+/* Media query para pantallas medianas (tabletas) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(4, 1fr);
+        flex: none;
+    }
+    
+    .info-sidebar {
+        min-width: 100%;
+        flex: none;
+    }
+
+    .menu-item {
+        font-size: 0.85em;
+        height: 70px;
+    }
+    /* Aseguramos que el login se mantenga horizontal en tabletas */
+    .login-form .input-row {
+        flex-direction: row;
+        align-items: center;
+    }
+    .login-form label {
+        text-align: right;
+        width: auto; /* Devolver al valor por defecto para flexibilidad */
+        flex: 0 0 90px; /* Mantener el ancho fijo */
+    }
+    .button-row {
+        flex-direction: row;
+        padding-left: 100px;
+        justify-content: flex-start;
+    }
+    .btn-primary, .btn-link {
+        width: auto; /* Devolver al ancho automático */
+        max-width: none;
+    }
+}
